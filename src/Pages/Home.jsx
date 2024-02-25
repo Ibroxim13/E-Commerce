@@ -27,7 +27,6 @@ export default function Home() {
   useEffect(() => {
     axios("https://dummyjson.com/products?limit=100")
       .then(res => {
-        console.log(res.data.products);
         setAllProducts(res.data.products);
         let arr = res.data.products.filter(item => {
           if (item.rating >= 4.5) {
@@ -279,7 +278,7 @@ export default function Home() {
       <div className="newslatter-wrapper">
         <div className="container">
           <div className="newslatter-wrapper-content">
-            <MdOutlineEmail className='back-email-img'/>
+            <MdOutlineEmail className='back-email-img' />
             <p>Sign Up for the <strong>NEWSLETTER</strong></p>
             <form className="newslatter-form">
               <input type="email" placeholder='Enter Your Email' />
