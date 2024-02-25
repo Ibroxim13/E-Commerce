@@ -25,6 +25,19 @@ body {
     padding: 0 20px;
 }
 
+/* Breadcrumb */
+.breadcrumb {
+    padding: 20px 0;
+    text-align: center;
+}
+
+.breadcrumb span:last-child {
+    font-weight: 600;
+    color: #15161D;
+}
+
+/* Breadcrumb end*/
+
 /* Header */
 .header-top {
     background-color: #1E1F29;
