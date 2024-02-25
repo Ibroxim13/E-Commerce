@@ -1,11 +1,14 @@
-import React, { useState } from 'react'
+import axios from 'axios'
+import React, { useEffect, useRef, useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 
 export default function Header() {
-  const [allCategories, setAllCategories] = useState([
-    "smartphones", "laptops", "fragrances", "skincare", "groceries", "home-decoration"
-  ])
+  const [allCategories, setAllCategories] = useState([])
 
+  useEffect(() => {
+    axios("https://dummyjson.com/products/categories")
+      .then(res => setAllCategories(res.data))
+  }, [])
 
   return (
     <>
@@ -103,27 +106,31 @@ export default function Header() {
             <li>
               <NavLink className="navbar-text" to={"/home"}>Home</NavLink>
             </li>
-            <li>
-              <NavLink className="navbar-text" to={"/"}>smartphones</NavLink>
-            </li>
-            <li>
-              <NavLink className="navbar-text" to={"/"}>laptops</NavLink>
-            </li>
-            <li>
-              <NavLink className="navbar-text" to={"/"}>fragrances</NavLink>
-            </li>
-            <li>
-              <NavLink className="navbar-text" to={"/"}>skincare</NavLink>
-            </li>
-            <li>
-              <NavLink className="navbar-text" to={"/"}>groceries</NavLink>
-            </li>
-            <li>
-              <NavLink className="navbar-text" to={"/"}>home-decoration</NavLink>
-            </li>
+            {
+              allCategories.map(category => {
+                if (category.length == 15 && category.includes("-")) {
+                  console.log(category);
+                }
+                return (
+                  <li key={category}>
+                    <NavLink className={
+                      `
+                        navbar-text
+                        ${category.length >= 14 && category.includes("-") ? "navbar-text-w-129" : ""}
+                        ${category.length == 12 && category.includes("-") ? "navbar-text-w-120" : ""}
+                        ${category.length == 11 && category.includes("-") ? "navbar-text-w-125" : ""}
+                        ${category.length == 10 && category.includes("-") ? "navbar-text-w-119" : ""}
+                      `
+                    }
+                      to={`/${category}`}>{category}</NavLink>
+                  </li>
+                )
+              }
+              )
+            }
           </ul>
         </div>
-      </nav>
+      </nav >
     </>
   )
 }
