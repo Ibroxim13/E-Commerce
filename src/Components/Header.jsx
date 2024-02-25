@@ -108,9 +108,6 @@ export default function Header() {
             </li>
             {
               allCategories.map(category => {
-                if (category.length == 15 && category.includes("-")) {
-                  console.log(category);
-                }
                 return (
                   <li key={category}>
                     <NavLink className={
