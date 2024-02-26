@@ -1,9 +1,11 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
+import { useContextProvider } from '../Context/MainContext'
 
 export default function Header() {
   const [allCategories, setAllCategories] = useState([])
+  let [wishlist, setWishlist] = useContextProvider()
 
   useEffect(() => {
     axios("https://dummyjson.com/products/categories")
@@ -78,10 +80,10 @@ export default function Header() {
             <div className="header-bottom-col">
               <ul className="product-actions">
                 <li>
-                  <Link to={"#"}>
+                  <Link to={"/wishlist"}>
                     <div className="product-action-icon">
                       <i className="bi bi-heart"></i>
-                      <span className="product-counter">2</span>
+                      <span className="product-counter">{wishlist}</span>
                     </div>
                     <span className='product-action-text'>Your Wishlist</span>
                   </Link>
