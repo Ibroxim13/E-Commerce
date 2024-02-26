@@ -172,7 +172,7 @@ export default function Home() {
                         <Rate disabled defaultValue={Math.round(product.rating)} className='new-product-card-rate' />
                         <div className="new-product-card-actions">
                           <span><IoIosHeartEmpty /></span>
-                          <span><FaRegEye /></span>
+                          <span><Link to={`/product/:${product.id}`}><FaRegEye /></Link></span>
                         </div>
                       </div>
                       <div className="new-product-card-add-cart">
@@ -259,7 +259,7 @@ export default function Home() {
                         <Rate disabled defaultValue={Math.round(product.rating)} className='new-product-card-rate' />
                         <div className="new-product-card-actions">
                           <span><IoIosHeartEmpty /></span>
-                          <span><FaRegEye /></span>
+                          <span><Link to={`/product/:${product.id}`}><FaRegEye /></Link></span>
                         </div>
                       </div>
                       <div className="new-product-card-add-cart">
