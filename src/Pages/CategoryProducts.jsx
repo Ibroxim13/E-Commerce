@@ -6,6 +6,9 @@ import { FaRegEye } from "react-icons/fa";
 import { IoIosHeartEmpty } from "react-icons/io";
 import { IoCart } from "react-icons/io5";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
+import { SuccessNotification } from '../Notifications/SuccessNotification'
+import { ErrorNotification } from '../Notifications/ErrorNotification'
+import { useContextProvider } from '../Context/MainContext'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation } from 'swiper/modules';
 import 'swiper/css';
@@ -17,12 +20,47 @@ export default function CategoryProducts() {
     const swiperNavPrevRef = useRef(null);
     const swiperNavNextRef = useRef(null);
     const [categoryProducts, setCategoryProducts] = useState([])
+    let [wishlist, setWishlist, wishlistProducts, setWishlistProducts] = useContextProvider()
 
     useEffect(() => {
         axios(`https://dummyjson.com/products/category/${location.pathname.slice(13)}`)
             .then(res => setCategoryProducts
                 (res.data.products))
     }, [])
+
+    const addToWishlist = (product) => {
+        if (wishlistProducts.length === 0) {
+            setWishlistProducts([...wishlistProducts, product])
+            localStorage.setItem("wishlist-products", JSON.stringify([...wishlistProducts, product]))
+            setWishlist(++wishlist)
+            localStorage.setItem("wishlist", JSON.stringify(wishlist))
+            SuccessNotification(`Added ${product.title} to wishlist`)
+        } else {
+            let arr = wishlistProducts.filter(item => {
+                if (item.id == product.id) {
+                    return item
+                }
+            })
+            if (!(arr.length > 0)) {
+                setWishlistProducts([...wishlistProducts, product])
+                localStorage.setItem("wishlist-products", JSON.stringify([...wishlistProducts, product]))
+                setWishlist(++wishlist)
+                localStorage.setItem("wishlist", JSON.stringify(wishlist))
+                SuccessNotification(`Added ${product.title} to wishlist`)
+            } else {
+                let arr1 = wishlistProducts.filter(item => {
+                    if (item.id !== product.id) {
+                        return item
+                    }
+                })
+                setWishlistProducts(arr1)
+                localStorage.setItem("wishlist-products", JSON.stringify(arr1))
+                setWishlist(--wishlist)
+                localStorage.setItem("wishlist", JSON.stringify(wishlist))
+                ErrorNotification(`${product.title} deleted from wishlist`)
+            }
+        }
+    }
 
     return (
         <>
@@ -68,7 +106,7 @@ export default function CategoryProducts() {
                                                 <div className='new-product-card-price'>{product.price}$ <span>{(product.price * (100 + Math.round(product.discountPercentage)) / 100).toFixed()}$</span></div>
                                                 <Rate disabled defaultValue={Math.round(product.rating)} className='new-product-card-rate' />
                                                 <div className="new-product-card-actions">
-                                                    <span><IoIosHeartEmpty /></span>
+                                                    <span><IoIosHeartEmpty onClick={() => addToWishlist(product)} /></span>
                                                     <span><Link to={`/product/:${product.id}`}><FaRegEye /></Link></span>
                                                 </div>
                                             </div>
