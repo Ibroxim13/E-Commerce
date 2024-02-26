@@ -82,6 +82,13 @@ export default function Home() {
     clearTimer(deadline);
   }, []);
 
+  const goToShop = () => {
+    window.scrollTo({
+      top: 800,
+      behavior: "smooth",
+    });
+  }
+
 
   return (
     <section className='home-wrapper'>
@@ -214,7 +221,7 @@ export default function Home() {
             </ul>
             <h1>HOT DEAL THIS WEEK</h1>
             <p>NEW COLLECTION UP TO 50% OFF</p>
-            <button>shop now</button>
+            <button onClick={goToShop}>shop now</button>
           </div>
         </div>
       </section>
