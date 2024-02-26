@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 
 export default function Header() {
@@ -119,7 +119,8 @@ export default function Header() {
                         ${category.length == 10 && category.includes("-") ? "navbar-text-w-119" : ""}
                       `
                     }
-                      to={`/${category}`}>{category}</NavLink>
+                      to={`/categories/:${category}`}
+                    >{category}</NavLink>
                   </li>
                 )
               }

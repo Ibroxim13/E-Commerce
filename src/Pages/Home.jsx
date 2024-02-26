@@ -16,9 +16,10 @@ import { Autoplay, Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import axios from 'axios'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 export default function Home() {
+  const navigate = useNavigate()
   const swiperNavPrevRef = useRef(null);
   const swiperNavNextRef = useRef(null);
   const [allProducts, setAllProducts] = useState([])
@@ -90,42 +91,42 @@ export default function Home() {
             <img src={smartphones} alt="smartphones" />
             <div className="category-banner-content">
               <h3>Smartphones <br /> Collection</h3>
-              <button>Shop now <FaArrowAltCircleRight className='to-shop-icon' /></button>
+              <button onClick={() => navigate("/categories/:smartphones")}>Shop now <FaArrowAltCircleRight className='to-shop-icon' /></button>
             </div>
           </div>
           <div className="category-banner">
             <img src={laptops} alt="smartphones" />
             <div className="category-banner-content">
               <h3>Laptops <br /> Collection</h3>
-              <button>Shop now <FaArrowAltCircleRight className='to-shop-icon' /></button>
+              <button onClick={() => navigate("/categories/:laptops")}>Shop now <FaArrowAltCircleRight className='to-shop-icon' /></button>
             </div>
           </div>
           <div className="category-banner">
             <img src={parfumes} alt="smartphones" />
             <div className="category-banner-content">
               <h3>Fragrances <br /> Collection</h3>
-              <button>Shop now <FaArrowAltCircleRight className='to-shop-icon' /></button>
+              <button onClick={() => navigate("/categories/:fragrances")}>Shop now <FaArrowAltCircleRight className='to-shop-icon' /></button>
             </div>
           </div>
           <div className="category-banner">
             <img src={skincare} alt="smartphones" />
             <div className="category-banner-content">
               <h3>Skincare <br /> Collection</h3>
-              <button>Shop now <FaArrowAltCircleRight className='to-shop-icon' /></button>
+              <button onClick={() => navigate("/categories/:skincare")}>Shop now <FaArrowAltCircleRight className='to-shop-icon' /></button>
             </div>
           </div>
           <div className="category-banner">
             <img src={groceries} alt="smartphones" />
             <div className="category-banner-content">
               <h3>Groceries <br /> Collection</h3>
-              <button>Shop now <FaArrowAltCircleRight className='to-shop-icon' /></button>
+              <button onClick={() => navigate("/categories/:groceries ")}>Shop now <FaArrowAltCircleRight className='to-shop-icon' /></button>
             </div>
           </div>
           <div className="category-banner">
             <img src={homeDecoration} alt="smartphones" />
             <div className="category-banner-content">
               <h3>Home Decoration <br /> Collection</h3>
-              <button>Shop now <FaArrowAltCircleRight className='to-shop-icon' /></button>
+              <button onClick={() => navigate("/categories/:home-decoration")}>Shop now <FaArrowAltCircleRight className='to-shop-icon' /></button>
             </div>
           </div>
         </Carousel>
