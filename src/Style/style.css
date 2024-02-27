@@ -1101,3 +1101,225 @@ body {
 }
 
 /* Wishlist end */
+
+/* My account */
+.my-account-wrapper {
+    margin: 40px 0;
+}
+
+.my-account-wrapper-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* My account end*/
+
+/* Log in */
+.my-account-login {
+    width: 40%;
+    padding: 30px;
+    background-color: #E4E7ED;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 0 20px #E4E7ED;
+}
+
+.my-account-login h1,
+.my-account-signup h1 {
+    font-size: 26px;
+    margin-bottom: 6px;
+    font-weight: 700;
+    color: #15161D;
+}
+
+.my-account-login p,
+.my-account-signup p {
+    font-size: 14px;
+    color: #1E1F29;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.my-account-login form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.my-account-login form input {
+    width: 100%;
+    height: 45px;
+    border: 1px solid #8D99AE;
+    outline: 0;
+    font-size: 16px;
+    padding: 10px;
+    border-radius: 0px;
+    color: #1E1F29;
+    transition: all 0.2s;
+}
+
+.my-account-login form input:focus {
+    box-shadow: 0 0 10px #E4E7ED;
+    border: 0;
+    border-radius: 8px;
+}
+
+.my-account-login form button {
+    margin: 30px 0 15px;
+    width: 100%;
+    background-color: #D10024;
+    border: 0;
+    height: 35px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.my-account-login form button:hover,
+.my-account-signup form button:hover {
+    opacity: 0.9;
+}
+
+.my-acccount-login-details {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+}
+
+/* Log in end */
+
+/* Sign up */
+.my-account-signup {
+    width: 80%;
+    padding: 30px;
+    background-color: #E4E7ED;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 0 20px #E4E7ED;
+}
+
+.my-account-signup form button {
+    width: 31.7%;
+    height: 45px;
+    background-color: #D10024;
+    border: 0;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.my-account-signup form {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+}
+
+.my-account-signup form input {
+    width: 31.7%;
+    height: 45px;
+    border: 1px solid #8D99AE;
+    outline: 0;
+    font-size: 16px;
+    padding: 10px;
+    border-radius: 0px;
+    color: #1E1F29;
+    transition: all 0.2s;
+}
+
+.my-account-signup form input:focus {
+    box-shadow: 0 0 10px #E4E7ED;
+    border: 0;
+    border-radius: 8px;
+}
+
+.input-file {
+    position: relative;
+    width: 31.7%;
+    height: 45px;
+}
+
+.input-file span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 45px;
+    cursor: pointer;
+    outline: none;
+    font-size: 16px;
+    color: rgb(255 255 255);
+    text-align: center;
+    border-radius: 4px;
+    background-color: #419152;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    transition: all 0.2s ease-in;
+}
+
+.input-file span:hover {
+    opacity: 0.9;
+}
+
+.input-file input[type=file] {
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    width: 100%;
+    visibility: hidden;
+}
+
+/* Sign up end */
+
+/* User account */
+.user-info-box {
+    width: 100%;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 70px;
+}
+
+.user-info-box-col:first-child {
+    box-shadow: 0 0 15px #c4bdbe;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-info-box-col:first-child img {
+    object-fit: cover;
+    width: 80%;
+}
+
+.user-info-box-col:last-child div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.user-info-box-col:last-child div span {
+    font-weight: 400;
+    font-size: 20px;
+}
+
+/* User account end */
