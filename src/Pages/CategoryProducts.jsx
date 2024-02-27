@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import BreadCrumb from '../Components/BreadCrumb'
 import { useLocation, Link } from 'react-router-dom'
-import { Carousel, Rate } from 'antd';
+import { Rate } from 'antd';
 import { FaRegEye } from "react-icons/fa";
 import { IoIosHeartEmpty } from "react-icons/io";
 import { IoCart } from "react-icons/io5";
