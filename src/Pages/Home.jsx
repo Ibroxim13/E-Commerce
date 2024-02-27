@@ -42,10 +42,10 @@ export default function Home() {
       })
   }, [])
 
-  let [days, setDays] = useState("");
-  let [hours, setHours] = useState("00");
-  let [minutes, setMinutes] = useState("00");
-  let [seconds, setSeconds] = useState("00");
+  let [days, setDays] = useState("0");
+  let [hours, setHours] = useState("0");
+  let [minutes, setMinutes] = useState("0");
+  let [seconds, setSeconds] = useState("0");
 
   const getTimeRemaining = (e) => {
     const total = Date.parse(e) - Date.parse(new Date());
@@ -74,15 +74,15 @@ export default function Home() {
   };
 
   const clearTimer = (e) => {
-    setDays("")
-    setHours("00")
-    setMinutes("00")
-    setSeconds("00")
+    setDays("0")
+    setHours("0")
+    setMinutes("0")
+    setSeconds("0")
     const id = setInterval(() => { startTimer(e) }, 1000);
   };
 
   useEffect(() => {
-    let deadline = "2024-03-01";
+    let deadline = "2024-03-11";
     clearTimer(deadline);
   }, []);
 
