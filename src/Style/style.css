@@ -1085,3 +1085,19 @@ body {
 }
 
 /* Single product end*/
+
+/* Wishlist */
+.wishlist-title {
+    font-size: 24px;
+    margin: 30px 0;
+}
+
+.wishlist-products-content {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-bottom: 80px;
+}
+
+/* Wishlist end */
