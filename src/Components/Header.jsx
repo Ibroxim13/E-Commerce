@@ -5,7 +5,7 @@ import { useContextProvider } from '../Context/MainContext'
 
 export default function Header() {
   const [allCategories, setAllCategories] = useState([])
-  let [wishlist, setWishlist] = useContextProvider()
+  let [wishlist] = useContextProvider()
 
   useEffect(() => {
     axios("https://dummyjson.com/products/categories")
@@ -45,7 +45,7 @@ export default function Header() {
                 </Link>
               </li>
               <li>
-                <Link>
+                <Link to={"/my-account"}>
                   <i className="bi bi-person"></i>
                   <span>My Account</span>
                 </Link>
