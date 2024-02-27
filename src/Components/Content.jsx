@@ -4,6 +4,8 @@ import Home from '../Pages/Home'
 import SingleProduct from '../Pages/SingleProduct'
 import CategoryProducts from '../Pages/CategoryProducts'
 import WishList from '../Pages/WishList'
+import MyAccount from '../Pages/MyAccount'
+import Signup from '../Pages/Signup'
 
 export default function Content() {
   return (
@@ -11,6 +13,8 @@ export default function Content() {
       <Route path='/' element={<Home />} />
       <Route path='/home' element={<Home />} />
       <Route path='/wishlist' element={<WishList />} />
+      <Route path='/my-account' element={<MyAccount />} />
+      <Route path='/sign-up' element={<Signup />} />
       <Route path='/categories/:category' element={<CategoryProducts />} />
       <Route path='/product/:id' element={<SingleProduct />} />
     </Routes>
