@@ -5,7 +5,10 @@ import { useContextProvider } from '../Context/MainContext'
 
 export default function Header() {
   const [allCategories, setAllCategories] = useState([])
-  let [wishlist] = useContextProvider()
+  let [wishlist, setWishlist,
+    wishlistProducts, setWishlistProducts,
+    cartProducts, setCartProducts,
+    cartProductsCount, setCartProductsCount] = useContextProvider()
 
   useEffect(() => {
     axios("https://dummyjson.com/products/categories")
@@ -92,7 +95,7 @@ export default function Header() {
                   <Link to={"#"}>
                     <div className="product-action-icon">
                       <i className="bi bi-cart-fill"></i>
-                      <span className="product-counter">0</span>
+                      <span className="product-counter">{cartProductsCount}</span>
                     </div>
                     <span className='product-action-text'>Your Cart</span>
                   </Link>
