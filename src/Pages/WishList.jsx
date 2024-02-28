@@ -5,13 +5,15 @@ import { useLocation } from 'react-router-dom'
 import { useContextProvider } from '../Context/MainContext'
 import { IoIosHeartEmpty } from "react-icons/io";
 import { IoCart } from "react-icons/io5";
-import { FaRegEye } from 'react-icons/fa'
+import { FaRegEye, FaRegHeart } from 'react-icons/fa'
+import { FaHeart } from "react-icons/fa6";
 import { Link } from 'react-router-dom'
 import { ErrorNotification } from '../Notifications/ErrorNotification'
+import { SuccessNotification } from '../Notifications/SuccessNotification'
 
 export default function WishList() {
     const location = useLocation()
-    let [wishlist, setWishlist, wishlistProducts, setWishlistProducts] = useContextProvider()
+    let [wishlist, setWishlist, wishlistProducts, setWishlistProducts, cartProducts, setCartProducts, cartProductsCount, setCartProductsCount] = useContextProvider()
 
     const deleteProductWishlist = product => {
         let arr1 = wishlistProducts.filter(item => {
@@ -26,6 +28,31 @@ export default function WishList() {
         ErrorNotification(`${product.title} deleted from wishlist`)
     }
 
+    const addToCart = (product) => {
+        if (cartProducts.length === 0) {
+            setCartProducts([...cartProducts, { ...product, quantity: 1 }])
+            localStorage.setItem("cart-products", JSON.stringify([...cartProducts, { ...product, quantity: 1 }]))
+            setCartProductsCount(++cartProductsCount)
+            localStorage.setItem("cart-products-count", JSON.stringify(cartProductsCount))
+            SuccessNotification(`Added ${product.title} to cart`)
+        } else {
+            let arr = cartProducts.filter(item => {
+                if (item.id == product.id) {
+                    return item
+                }
+            })
+            if (!(arr.length > 0)) {
+                setCartProducts([...cartProducts, { ...product, quantity: 1 }])
+                localStorage.setItem("cart-products", JSON.stringify([...cartProducts, { ...product, quantity: 1 }]))
+                setCartProductsCount(++cartProductsCount)
+                localStorage.setItem("cart-products-count", JSON.stringify(cartProductsCount))
+                SuccessNotification(`Added ${product.title} to cart`)
+            }
+            else {
+                SuccessNotification(`You have already added ${product.title} to cart!`)
+            }
+        }
+    }
 
     return (
         <>
@@ -53,10 +80,15 @@ export default function WishList() {
                                             </div>
                                         </div>
                                         <div className="new-product-card-add-cart">
-                                            <button className='new-product-card-btn-add'><IoCart /><span>add to cart</span></button>
+                                            <button onClick={() => addToCart(product)} className='new-product-card-btn-add'><IoCart /><span>add to cart</span></button>
                                         </div>
                                     </div>
-                                ) : <h3>Empty</h3>
+                                ) :
+                                <div className='empty-notification'>
+                                    <div className='empty-heart'><FaHeart /></div>
+                                    <span>You haven't added products yet! Add by clicking <FaRegHeart /></span>
+                                    <Link to={"/home"}><button>Go to Add</button></Link>
+                                </div>
                         }
 
                     </main>

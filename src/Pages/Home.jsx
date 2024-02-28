@@ -27,7 +27,7 @@ export default function Home() {
   const swiperNavNextRef = useRef(null);
   const [allProducts, setAllProducts] = useState([])
   const [topRatedProducts, setTopRatedProducts] = useState([])
-  let [wishlist, setWishlist, wishlistProducts, setWishlistProducts] = useContextProvider()
+  let [wishlist, setWishlist, wishlistProducts, setWishlistProducts, cartProducts, setCartProducts, cartProductsCount, setCartProductsCount] = useContextProvider()
 
   useEffect(() => {
     axios("https://dummyjson.com/products?limit=100")
@@ -127,6 +127,32 @@ export default function Home() {
     }
   }
 
+  const addToCart = (product) => {
+    if (cartProducts.length === 0) {
+      setCartProducts([...cartProducts, { ...product, quantity: 1 }])
+      localStorage.setItem("cart-products", JSON.stringify([...cartProducts, { ...product, quantity: 1 }]))
+      setCartProductsCount(++cartProductsCount)
+      localStorage.setItem("cart-products-count", JSON.stringify(cartProductsCount))
+      SuccessNotification(`Added ${product.title} to cart`)
+    } else {
+      let arr = cartProducts.filter(item => {
+        if (item.id == product.id) {
+          return item
+        }
+      })
+      if (!(arr.length > 0)) {
+        setCartProducts([...cartProducts, { ...product, quantity: 1 }])
+        localStorage.setItem("cart-products", JSON.stringify([...cartProducts, { ...product, quantity: 1 }]))
+        setCartProductsCount(++cartProductsCount)
+        localStorage.setItem("cart-products-count", JSON.stringify(cartProductsCount))
+        SuccessNotification(`Added ${product.title} to cart`)
+      }
+      else {
+        SuccessNotification(`You have already added ${product.title} to cart!`)
+      }
+    }
+  }
+
   return (
     <section className='home-wrapper'>
       <div className="container">
@@ -221,7 +247,7 @@ export default function Home() {
                         </div>
                       </div>
                       <div className="new-product-card-add-cart">
-                        <button className='new-product-card-btn-add'><IoCart /><span>add to cart</span></button>
+                        <button onClick={() => addToCart(product)} className='new-product-card-btn-add'><IoCart /><span>add to cart</span></button>
                       </div>
                     </div>
                   </SwiperSlide>
@@ -308,7 +334,7 @@ export default function Home() {
                         </div>
                       </div>
                       <div className="new-product-card-add-cart">
-                        <button className='new-product-card-btn-add'><IoCart /><span>add to cart</span></button>
+                        <button onClick={() => addToCart(product)} className='new-product-card-btn-add'><IoCart /><span>add to cart</span></button>
                       </div>
                     </div>
                   </SwiperSlide>

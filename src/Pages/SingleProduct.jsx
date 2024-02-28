@@ -5,12 +5,15 @@ import { Rate } from 'antd'
 import { useParams } from 'react-router-dom'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Autoplay, FreeMode, Thumbs } from 'swiper/modules';
+import { SuccessNotification } from '../Notifications/SuccessNotification'
 
 import 'swiper/css';
 import 'swiper/css/navigation';
+import { useContextProvider } from '../Context/MainContext'
 
 
 export default function SingleProduct() {
+    let [wishlist, setWishlist, wishlistProducts, setWishlistProducts, cartProducts, setCartProducts, cartProductsCount, setCartProductsCount] = useContextProvider()
     const [product, setProduct] = useState({})
     const [comments, setComments] = useState({})
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
@@ -40,6 +43,38 @@ export default function SingleProduct() {
         if (productCount !== 0) {
             setProductCount(--productCount)
             setProductTotalPrice(productTotalPrice -= product.price)
+        }
+    }
+
+    const addToCart = (product) => {
+        if (cartProducts.length === 0) {
+            setCartProducts([...cartProducts, { ...product, quantity: productCount }])
+            localStorage.setItem("cart-products", JSON.stringify([...cartProducts, { ...product, quantity: productCount }]))
+            setCartProductsCount(cartProductsCount + productCount)
+            localStorage.setItem("cart-products-count", JSON.stringify(cartProductsCount + productCount))
+            SuccessNotification(`Added ${productCount} ${product.title} to cart`)
+            setProductCount(1)
+            setProductTotalPrice(product.price)
+        } else {
+            let arr = cartProducts.filter(item => {
+                if (item.id == product.id) {
+                    return item
+                }
+            })
+            if (!(arr.length > 0)) {
+                setCartProducts([...cartProducts, { ...product, quantity: productCount }])
+                localStorage.setItem("cart-products", JSON.stringify([...cartProducts, { ...product, quantity: productCount }]))
+                setCartProductsCount(cartProductsCount + productCount)
+                localStorage.setItem("cart-products-count", JSON.stringify(cartProductsCount + productCount))
+                SuccessNotification(`Added ${productCount} ${product.title} to cart`)
+                setProductCount(1)
+                setProductTotalPrice(product.price)
+            }
+            else {
+                SuccessNotification(`You have already added ${product.title} to cart!`)
+                setProductCount(1)
+                setProductTotalPrice(product.price)
+            }
         }
     }
 
@@ -104,7 +139,7 @@ export default function SingleProduct() {
                                     <button onClick={incrCount}>+</button>
                                     <span>Total Price: {productTotalPrice}$</span>
                                 </div>
-                                <button className='product-add-to-cart-btn'>Add to Cart</button>
+                                <button onClick={() => addToCart(product)} className='product-add-to-cart-btn'>Add to Cart</button>
                             </div>
                             <span className='product-category'>Category: <b>{product.category}</b></span>
                         </div>
