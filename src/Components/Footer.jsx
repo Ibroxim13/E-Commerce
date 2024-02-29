@@ -8,7 +8,7 @@ export default function Footer() {
         <div className="container">
           <div className="footer-lists-content">
             <ul>
-              <li><Link><h1>about us</h1></Link></li>
+              <li><h1>about us</h1></li>
               <li>We are the online store with 10 years of experience.You can see more info in about page</li>
               <li>
                 <Link to={"tel:+998977041308"}>
