@@ -92,7 +92,7 @@ export default function Header() {
                   </Link>
                 </li>
                 <li>
-                  <Link to={"#"}>
+                  <Link to={"/cart"}>
                     <div className="product-action-icon">
                       <i className="bi bi-cart-fill"></i>
                       <span className="product-counter">{cartProductsCount}</span>
