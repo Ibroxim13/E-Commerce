@@ -1375,3 +1375,237 @@ body {
 }
 
 /* User account end */
+
+/* Cart */
+.cart-wrapper-content {
+    margin: 30px 0;
+    background-color: #f1f3f9;
+    padding: 30px;
+}
+
+.cart-wrapper-content table {
+    border: 0;
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+}
+
+.cart-wrapper-content table td,
+.cart-wrapper-content table th {
+    border: 1px solid black;
+    text-align: center;
+    padding: 5px;
+}
+
+.cart-wrapper-content table td {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.cart-wrapper-content table td:first-child {
+    text-transform: capitalize;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.cart-wrapper-content table td {
+    font-weight: 600;
+}
+
+.cart-wrapper-content table td img {
+    width: 80%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.cart-wrapper-content table td:nth-child(3) div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.cart-wrapper-content table td:nth-child(3) div button {
+    background-color: #D10024;
+    border: 0;
+    width: 30px;
+    height: 30px;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.cart-wrapper-content table td:nth-child(3) div button:hover {
+    opacity: 0.9;
+}
+
+.cart-wrapper-content table td:nth-child(3) div span {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.cart-wrapper-content table td:last-child {
+    color: #df324e;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.cart-activities {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+
+.total-price-products {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.cart-checkout button {
+    background-color: #419152;
+    border: 0;
+    border-radius: 10px;
+    width: 150px;
+    text-align: center;
+    font-size: 18px;
+    color: #fff;
+    height: 40px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.cart-checkout button:hover {
+    opacity: 0.9;
+}
+
+.modal-product-cart-checkout {
+    text-align: center;
+    background-color: #f1f3f9;
+    width: 50%;
+    margin: 50px auto;
+    padding: 30px;
+    border-radius: 20px;
+}
+
+.modal-product-cart-checkout h2 {
+    margin-bottom: 6px;
+    font-size: 20px;
+}
+
+.modal-product-cart-checkout p {
+    margin-bottom: 30px;
+    font-size: 14px;
+}
+
+.modal-product-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 20px;
+    border-bottom: 1px solid #727488;
+}
+
+.modal-product-col:first-child {
+    width: 30%;
+    height: 100px;
+    padding: 10px;
+}
+
+.modal-product-col:last-child {
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.modal-product-col:last-child span:first-child {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.modal-product-col:first-child img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.modal-product-details {
+    display: flex;
+    align-items: end;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+}
+
+.modal-product-details span:first-child {
+    font-size: 16px !important;
+}
+
+.modal-product-details span:last-child {
+    font-size: 14px !important;
+    display: flex;
+    gap: 6px;
+}
+
+.modal-product-details span:last-child p {
+    color: #D10024 !important;
+    margin-bottom: 0;
+    font-weight: 600;
+}
+
+.modal-product-cart-btn {
+    margin-top: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 10px;
+}
+
+.modal-product-cart-btn button {
+    padding: 0 20px;
+    height: 35px;
+    border: 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.modal-product-cart-btn button:first-child {
+    background-color: #D10024;
+}
+
+.modal-product-cart-btn button:last-child {
+    background-color: #419152;
+}
+
+.modal-product-cart-btn button:hover {
+    opacity: 0.9;
+}
+
+.modal-product-cart-checkout ul {
+    margin-top: 30px;
+}
+
+.modal-product-cart-checkout ul li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.modal-product-cart-checkout ul li span:first-child {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.modal-product-cart-checkout ul li span:last-child {
+    font-size: 18px;
+    font-weight: 600;
+    color: #15161D;
+}
+
+/* Cart end */
