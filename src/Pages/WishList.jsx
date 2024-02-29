@@ -75,7 +75,7 @@ export default function WishList() {
                                             <div className='new-product-card-price'>{product.price}$ <span>{(product.price * (100 + Math.round(product.discountPercentage)) / 100).toFixed()}$</span></div>
                                             <Rate disabled defaultValue={Math.round(product.rating)} className='new-product-card-rate' />
                                             <div className="new-product-card-actions">
-                                                <span><IoIosHeartEmpty onClick={() => deleteProductWishlist(product)} /></span>
+                                                <span><IoIosHeartEmpty style={{"color":"red"}} onClick={() => deleteProductWishlist(product)} /></span>
                                                 <span><Link to={`/product/:${product.id}`}><FaRegEye /></Link></span>
                                             </div>
                                         </div>
