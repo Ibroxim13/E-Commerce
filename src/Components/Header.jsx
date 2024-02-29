@@ -15,6 +15,8 @@ export default function Header() {
       .then(res => setAllCategories(res.data))
   }, [])
 
+  const media435 = window.matchMedia("(max-width: 435px)")
+
   return (
     <>
       <header className="header-top">
@@ -62,7 +64,7 @@ export default function Header() {
           <div className="header-bottom-content">
             <div className="header-bottom-col">
               <Link className='header-logo' to={"/"}>
-                <span>Just Buy</span>
+                <span>{media435.matches ? "JB" : "Just Buy"}</span>
                 <span>.</span>
               </Link>
             </div>
