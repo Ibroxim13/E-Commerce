@@ -1,7 +1,20 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useContextProvider } from '../Context/MainContext';
 
 export default function Footer() {
+  const [,,,,,,,,dep, setDep] = useContextProvider()
+  const goToShop = () => {
+    if (window.location.href == "" && window.location.href == "/home") {
+      window.scrollTo({
+        top: 800,
+        behavior: "smooth",
+      });
+    } else {
+      window.location.href = "/home"
+    }
+  }
+
   return (
     <footer className='footer-wrapper'>
       <div className="footer-lists">
@@ -31,23 +44,23 @@ export default function Footer() {
             </ul>
             <ul>
               <li><h1>categories</h1></li>
-              <li><Link>All Products</Link></li>
-              <li><Link>Laptops</Link></li>
-              <li><Link>Furniture</Link></li>
-              <li><Link>Motorcycle</Link></li>
+              <li><Link onClick={goToShop}>All Products</Link></li>
+              <li><Link to={"/categories/:laptops"} onClick={() => setDep(!dep)}>Laptops</Link></li>
+              <li><Link to={"/categories/:furniture"} onClick={() => setDep(!dep)}>Furniture</Link></li>
+              <li><Link to={"/categories/:motorcycle"} onClick={() => setDep(!dep)}>Motorcycle</Link></li>
             </ul>
             <ul>
               <li><h1>information</h1></li>
               <li><Link>About Us</Link></li>
-              <li><Link>Contact Us</Link></li>
+              <li><Link to={"mailto:ibrohimismoilov738@gmail.com"}>Contact Us</Link></li>
               <li><Link>Privacy Policy</Link></li>
               <li><Link>Orders and Returns</Link></li>
             </ul>
             <ul>
               <li><h1>service</h1></li>
-              <li><Link>My Account</Link></li>
-              <li><Link>View Cart</Link></li>
-              <li><Link>Wishlist</Link></li>
+              <li><Link to={"/my-account"}>My Account</Link></li>
+              <li><Link to={"/cart"}>View Cart</Link></li>
+              <li><Link to={"/wishlist"}>Wishlist</Link></li>
               <li><Link>Help</Link></li>
             </ul>
           </div>
