@@ -115,7 +115,7 @@ export default function SingleProduct() {
                             >
                                 {
                                     product?.images?.map(image =>
-                                        <SwiperSlide style={{ textAlign: "center" }} key={image}>
+                                        <SwiperSlide className='product-extra-slide' style={{ textAlign: "center" }} key={image}>
                                             <img width={250} height={150} src={image} />
                                         </SwiperSlide>
                                     )
