@@ -16,6 +16,9 @@ import 'swiper/css/navigation';
 import axios from 'axios'
 
 export default function CategoryProducts() {
+    const media1150px = window.matchMedia("(max-width: 1150px)")
+    const media860px = window.matchMedia("(max-width: 860px)")
+    const media550px = window.matchMedia("(max-width: 550px)")
     const location = useLocation()
     const swiperNavPrevRef = useRef(null);
     const swiperNavNextRef = useRef(null);
@@ -96,8 +99,8 @@ export default function CategoryProducts() {
                     <h2 className="wrapper-title"><span style={{ textTransform: "capitalize" }}>{location.pathname.slice(13)}</span> Products</h2>
                     <main>
                         <Swiper
-                            slidesPerView={4}
-                            spaceBetween={36}
+                            slidesPerView={media1150px.matches ? (media860px.matches ? (media550px.matches ? 1 : 2) : 3) : 4}
+                            spaceBetween={26}
                             className='new-products-content'
                             modules={[Autoplay, Navigation]}
                             autoplay={{

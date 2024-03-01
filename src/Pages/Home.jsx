@@ -22,6 +22,9 @@ import { ErrorNotification } from '../Notifications/ErrorNotification'
 import { useContextProvider } from '../Context/MainContext'
 
 export default function Home() {
+  const media1150px = window.matchMedia("(max-width: 1150px)")
+  const media860px = window.matchMedia("(max-width: 860px)")
+  const media550px = window.matchMedia("(max-width: 550px)")
   const navigate = useNavigate()
   const swiperNavPrevRef = useRef(null);
   const swiperNavNextRef = useRef(null);
@@ -156,7 +159,7 @@ export default function Home() {
   return (
     <section className='home-wrapper'>
       <div className="container">
-        <Carousel className='category-banners' autoplay autoplaySpeed={5000} effect='fade'>
+        <Carousel className='category-banners' autoplaySpeed={5000} effect='fade'>
           <div className="category-banner">
             <img src={smartphones} alt="smartphones" />
             <div className="category-banner-content">
@@ -206,8 +209,8 @@ export default function Home() {
           <h2 className="wrapper-title">All Products</h2>
           <main>
             <Swiper
-              slidesPerView={4}
-              spaceBetween={36}
+              slidesPerView={media1150px.matches ? (media860px.matches ? (media550px.matches ? 1 : 2) : 3) : 4}
+              spaceBetween={26}
               className='new-products-content'
               modules={[Autoplay, Navigation]}
               autoplay={{
@@ -293,8 +296,8 @@ export default function Home() {
           <h2 className="wrapper-title">Top Rated Products</h2>
           <main>
             <Swiper
-              slidesPerView={4}
-              spaceBetween={36}
+              slidesPerView={media1150px.matches ? (media860px.matches ? (media550px.matches ? 1 : 2) : 3) : 4}
+              spaceBetween={26}
               className='new-products-content'
               modules={[Autoplay, Navigation]}
               autoplay={{
