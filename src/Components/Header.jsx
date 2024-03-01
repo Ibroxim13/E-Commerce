@@ -8,7 +8,8 @@ export default function Header() {
   let [wishlist, setWishlist,
     wishlistProducts, setWishlistProducts,
     cartProducts, setCartProducts,
-    cartProductsCount, setCartProductsCount] = useContextProvider()
+    cartProductsCount, setCartProductsCount,
+    dep, setDep] = useContextProvider()
 
   useEffect(() => {
     axios("https://dummyjson.com/products/categories")
@@ -127,6 +128,7 @@ export default function Header() {
                       `
                     }
                       to={`/categories/:${category}`}
+                      onClick={() => setDep(!dep)}
                     >{category}</NavLink>
                   </li>
                 )

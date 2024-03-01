@@ -23,13 +23,14 @@ export default function CategoryProducts() {
     const swiperNavPrevRef = useRef(null);
     const swiperNavNextRef = useRef(null);
     const [categoryProducts, setCategoryProducts] = useState([])
-    let [wishlist, setWishlist, wishlistProducts, setWishlistProducts, cartProducts, setCartProducts, cartProductsCount, setCartProductsCount] = useContextProvider()
+    let [wishlist, setWishlist, wishlistProducts, setWishlistProducts, cartProducts,
+        setCartProducts, cartProductsCount, setCartProductsCount, dep, setDep] = useContextProvider()
 
     useEffect(() => {
         axios(`https://dummyjson.com/products/category/${location.pathname.slice(13)}`)
             .then(res => setCategoryProducts
                 (res.data.products))
-    }, [])
+    }, [dep])
 
     const addToWishlist = (product) => {
         if (wishlistProducts.length === 0) {
